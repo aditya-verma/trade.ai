@@ -49,7 +49,7 @@ class UserJWTAuthenticationBackend(authentication.BaseAuthentication):
 	"""Customer JWT Authentication backend to authorize User requests with
 		JWT token.
 	"""
-	jwt_token_prefix = 'Rat'
+	jwt_token_prefix = 'TAI'
 
 	def authenticate(self, request, *args, **kwargs):
 		try:

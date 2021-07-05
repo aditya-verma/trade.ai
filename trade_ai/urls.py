@@ -16,16 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from trade_ai.base.routers import RatnashreeBaseRouter
+from trade_ai.base.routers import TradeAIBaseRouter
 from trade_ai.accounts.routers import accounts_router_v1
-from trade_ai.addresses.routers import addresses_router_v1
-from trade_ai.products.routers import products_router_v1
 
-trade_ai_base_router_v1 = RatnashreeBaseRouter()
+trade_ai_base_router_v1 = TradeAIBaseRouter()
 
 trade_ai_base_router_v1.extend(accounts_router_v1)
-trade_ai_base_router_v1.extend(addresses_router_v1)
-trade_ai_base_router_v1.extend(products_router_v1)
 
 
 urlpatterns = [
