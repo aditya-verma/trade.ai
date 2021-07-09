@@ -88,7 +88,8 @@ DJANGO_APPS = [
 
 TRADEAI_APPS = [
     'trade_ai.accounts',
-    'trade_ai.base'
+    'trade_ai.base',
+    'trade_ai.btc_usdt'
 ]
 
 THIRD_PARTY_APPS = [
@@ -220,6 +221,8 @@ REST_FRAMEWORK = {
     ]
 }
 
+BINANCE_API_KEY = read_env_variable('BINANCE_API_KEY', '')
+BINANCE_API_SECRET = read_env_variable('BINANCE_API_SECRET', '')
 
 JWT_TOKEN_VALIDITY_DAYS = int(read_env_variable('JWT_TOKEN_VALIDITY_DAYS', '7'))
 

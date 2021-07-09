@@ -9,7 +9,8 @@ class BTC_USDT(TradeAIBaseModel):
     """Django model class to represent btc_usdt table.
     """
 
-    timestamp = models.DateTimeField()
+    timestamp_open = models.DateTimeField()
+    timestamp_close = models.DateTimeField()
     open = models.FloatField(max_length=16, unique=True)
     close = models.FloatField(max_length=16, unique=True)
     low = models.FloatField(max_length=16, unique=True)
