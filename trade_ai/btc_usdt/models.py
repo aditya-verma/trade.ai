@@ -5,19 +5,27 @@ from django.db import models
 
 from trade_ai.base.models import TradeAIBaseModel
 
+
 class BTC_USDT(TradeAIBaseModel):
     """Django model class to represent btc_usdt table.
     """
 
-    timestamp_open = models.DateTimeField()
-    timestamp_close = models.DateTimeField()
-    open = models.FloatField(max_length=16, unique=True)
-    close = models.FloatField(max_length=16, unique=True)
-    low = models.FloatField(max_length=16, unique=True)
-    high = models.FloatField(max_length=16, unique=True)
-    volume = models.FloatField(max_length=16, unique=True)
+    timestamp_open = models.CharField(max_length=16)
+    timestamp_close = models.CharField(max_length=16)
+    open = models.FloatField()
+    close = models.FloatField()
+    low = models.FloatField()
+    high = models.FloatField()
+    volume = models.FloatField()
 
-    REQUIRED_FIELDS = ('timestamp', 'open', 'close', 'high', 'low', 'volume')
+    REQUIRED_FIELDS = (
+        'timestamp', 'open',
+        'close', 'high',
+        'low', 'volume'
+    )
 
     def __str__(self):
-        return f'{self.close}'
+        if self.open < self.close:
+            return 'Green'
+        else:
+            return 'Red'

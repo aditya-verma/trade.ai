@@ -110,6 +110,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'trade_ai.urls'
 
+DEFAULT_AUTO_FIELD='django.db.models.BigAutoField'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
