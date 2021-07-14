@@ -138,7 +138,7 @@ DB_ENGINE = 'django.db.backends.postgresql_psycopg2'
 DB_NAME = read_env_variable('TRADEAI_DB_NAME')
 DB_USER = read_env_variable('TRADEAI_DB_USER_NAME')
 DB_PASSWORD = read_env_variable('TRADEAI_DB_USER_PASSWORD')
-DB_HOST = read_env_variable('TRADEAI_DB_HOST')
+DB_HOST = read_env_variable('TRADEAI_DB_HOST', 'pgdb')
 DB_PORT = int(read_env_variable('TRADEAI_DB_PORT', '5432'))
 
 DATABASES = {
@@ -228,4 +228,10 @@ BINANCE_API_SECRET = read_env_variable('BINANCE_API_SECRET', '')
 
 JWT_TOKEN_VALIDITY_DAYS = int(read_env_variable('JWT_TOKEN_VALIDITY_DAYS', '7'))
 
-SHIPPING_COST = 100
+# CELERY SETTINGS
+CELERY_BROKER_URL = read_env_variable('CELERY_BROKER', 'redis://localhost:6379/0')
+CELERY_RESULT_BACKEND = read_env_variable('CELERY_BROKER', 'redis://localhost:6379/0')
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Kolkata'
