@@ -20,8 +20,8 @@ services:
             - TRADEAI_DB_NAME=$TRADEAI_DB_NAME
             - TRADEAI_DB_USER_NAME=$TRADEAI_DB_USER_NAME
             - TRADEAI_DB_USER_PASSWORD=$TRADEAI_DB_USER_PASSWORD
-            - TRADEAI_DB_HOST=pgdb
-            - TRADEAI_DB_PORT=5432
+            - TRADEAI_DB_HOST=$TRADEAI_DB_HOST
+            - TRADEAI_DB_PORT=$TRADEAI_DB_PORT
         depends_on:
             - pgdb
             - redis
@@ -35,6 +35,11 @@ services:
             - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
             - CELERY_BROKER=redis://redis:6379/0
             - CELERY_BACKEND=redis://redis:6379/0
+            - TRADEAI_DB_NAME=$TRADEAI_DB_NAME
+            - TRADEAI_DB_USER_NAME=$TRADEAI_DB_USER_NAME
+            - TRADEAI_DB_USER_PASSWORD=$TRADEAI_DB_USER_PASSWORD
+            - TRADEAI_DB_HOST=$TRADEAI_DB_HOST
+            - TRADEAI_DB_PORT=$TRADEAI_DB_PORT
         depends_on:
             - django
             - redis

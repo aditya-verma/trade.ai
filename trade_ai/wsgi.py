@@ -12,6 +12,10 @@ import os
 from django.core.wsgi import get_wsgi_application
 
 from trade_ai import load_dotenv_local
+from trade_ai.btc_usdt import tasks
+
+# Start celery task
+tasks.live_data.apply_async((), retry=False)
 
 
 # Load .env on startup of WSGI server
