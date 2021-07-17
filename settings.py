@@ -89,7 +89,8 @@ DJANGO_APPS = [
 TRADEAI_APPS = [
     'trade_ai.accounts',
     'trade_ai.base',
-    'trade_ai.btc_usdt'
+    'trade_ai.btc_usdt',
+    'trade_ai.telegram'
 ]
 
 THIRD_PARTY_APPS = [
@@ -235,3 +236,6 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kolkata'
+
+#Telegram Settings
+TELEGRAM_BOT_TOKEN = read_env_variable('TELEGRAM_BOT_TOKEN', '')

@@ -24,6 +24,7 @@ services:
             - TRADEAI_DB_USER_PASSWORD=$TRADEAI_DB_USER_PASSWORD
             - TRADEAI_DB_HOST=$TRADEAI_DB_HOST
             - TRADEAI_DB_PORT=$TRADEAI_DB_PORT
+            - TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN
         depends_on:
             - pgdb
             - redis
@@ -42,6 +43,7 @@ services:
             - TRADEAI_DB_USER_PASSWORD=$TRADEAI_DB_USER_PASSWORD
             - TRADEAI_DB_HOST=$TRADEAI_DB_HOST
             - TRADEAI_DB_PORT=$TRADEAI_DB_PORT
+            - TELEGRAM_BOT_TOKEN=$TELEGRAM_BOT_TOKEN
         depends_on:
             - django
             - redis
