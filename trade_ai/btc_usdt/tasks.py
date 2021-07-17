@@ -8,22 +8,32 @@ from trade_ai.celery import app
 
 
 @sync_to_async()
-def handle_socket_message(msg):
-    if msg["data"]["k"]["x"] is True:
-        print(msg)
+def add_kline_data_to_database(kline):
+    """
+    Adds candlestick data for a given timeframe from exchange to local database
+
+    Args:
+        kline: candlestick data for a given timeframe.
+
+    Returns:
+        None
+    """
+    if kline["data"]["k"]["x"] is True:
+        if settings.DEBUG:
+            print(kline)
         BTC_USDT.objects.create(
-            timestamp_open=msg["data"]["k"]["t"],
-            timestamp_close=msg["data"]["k"]["T"],
-            open=msg["data"]["k"]["o"],
-            close=msg["data"]["k"]["c"],
-            low=msg["data"]["k"]["l"],
-            high=msg["data"]["k"]["h"],
-            volume=msg["data"]["k"]["v"]
+            timestamp_open=kline["data"]["k"]["t"],
+            timestamp_close=kline["data"]["k"]["T"],
+            open=kline["data"]["k"]["o"],
+            close=kline["data"]["k"]["c"],
+            low=kline["data"]["k"]["l"],
+            high=kline["data"]["k"]["h"],
+            volume=kline["data"]["k"]["v"]
         )
 
 
-def callback_func(msg):
-    asyncio.create_task(handle_socket_message(msg))
+def callback_func(kline):
+    asyncio.create_task(add_kline_data_to_database(kline))
 
 
 @app.task()
